@@ -1,22 +1,20 @@
 {
   "name": "ti-basic",
   "displayName": "TI-BASIC",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "VS Code language support for (e)Z80 TI-BASIC",
   "author": {
-    "name": "TIny_Hacker",
-    "email": "thetiniesthacker@gmail.com",
-    "url": "https://tiny-hacker.github.io/"
+    "name": "Lucas Lavallee"
   },
-  "publisher": "tiny-hacker",
+  "publisher": "LucasLavalleeMA",
   "license": "BSD-3-Clause",
   "icon": "assets/extension-icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TIny-Hacker/language-ti-basic"
+    "url": "https://github.com/LucasLavalleeMA/language-ti-basic.git"
   },
   "bugs": {
-    "url": "https://github.com/TIny-Hacker/language-ti-basic/issues"
+    "url": "https://github.com/LucasLavalleeMA/language-ti-basic/issues"
   },
   "engines": {
     "vscode": "^1.75.0"
@@ -68,6 +66,18 @@
       {
         "command": "extension.exportTIBasic",
         "title": "Export TI-BASIC Program"
+      },
+      {
+        "command": "extension.setTIBasicDestination",
+        "title": "Set TI-BASIC Export Destination Folder"
+      },
+      {
+        "command": "extension.exportActiveTIBasic",
+        "title": "Export Active TI-BASIC File"
+      },
+      {
+        "command": "extension.exportFolderTIBasic",
+        "title": "Export All TI-BASIC Files in Folder"
       }
     ]
   },
