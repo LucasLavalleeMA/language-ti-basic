@@ -2,10 +2,13 @@ const path = require('path');
 const vscode = require('vscode');
 const TIVarsLib = require('./tivars_lib/TIVarsLib.js');
 const fs = require('fs');
+const { registerCEmu } = require('./cemu.js');
 let lib;
 TIVarsLib().then((_lib) => { lib = _lib; });
 
 const DEST_KEY = 'tibasic.exportDestination';
+
+
 
 /** Convert a native path to the /local/... path TIVarsLib's virtual FS expects. */
 function toLibPath(fsPath) {
@@ -15,7 +18,7 @@ function toLibPath(fsPath) {
 /** Normalize line endings to CRLF and strip leading indentation. */
 function buildSource(text) {
     let source = '';
-    const lines = text.replaceAll(/(?<!\r)\n/gm, '\r\n').split('\r\n');
+    const lines = text.replaceAll(/(?<!\r)\n/gm, '\r\n').replaceAll('~','⁻').split('\r\n');
 
     for (let i = 0; i < lines.length; i++) {
         source += lines[i].trimStart() + '\r\n';
@@ -136,6 +139,8 @@ function activate(context) {
                 console.log('No file selected.');
             }
         });
+
+		
     });
 
     const exportBasic = vscode.commands.registerCommand('extension.exportTIBasic', () => {
@@ -258,6 +263,9 @@ function activate(context) {
     });
 
     context.subscriptions.push(importBasic, exportBasic, setDestination, exportActive, exportFolder);
+
+    // Embedded CEmu calculator + "Compile and run in CEmu" task
+    registerCEmu(context, { getLib: () => lib, writeProgram });
 }
 
 module.exports = {
