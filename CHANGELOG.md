@@ -2,6 +2,12 @@
 
 All notable changes to the "ti-basic" extension will be documented in this file.
 
+## [1.0.5] - 2026-11-12
+
+### Changed
+
+- Rename the extension to TI-Basic Plus CE.
+
 ## [1.0.3] - 2024-05-15
 
 ### Added
